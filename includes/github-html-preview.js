@@ -27,7 +27,7 @@
 	}
 
 	function addButton() {
-	   var buttonGroupEle = document.querySelector('.file-box .actions .button-group');
+	   var buttonGroupEle = document.querySelector('.file-header .button-group');
 	   if (typeof buttonGroupEle === 'undefined')
 		  return;
 
@@ -40,7 +40,7 @@
 	}
 
 	function onNodeInserted(e) {
-		if (e.target.nodeType === ELEMENT_NODE && e.target.className === 'file-box')
+		if (e.target.nodeType === ELEMENT_NODE && e.target.className === 'file')
 			checkFilebox();
 	}
 
@@ -51,7 +51,7 @@
 
 	function initialize() {
 		var repoContainerEle = document.querySelector('.repo-container');
-		if (typeof repoContainerEle !== 'undefined') {
+		if (repoContainerEle) {
 			repoContainerEle.addEventListener ('DOMNodeInserted', onNodeInserted, false);
 		}
 
