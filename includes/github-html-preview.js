@@ -39,7 +39,7 @@
 		htmlPreviewButtonEle.className = 'btn btn-sm BtnGroup-item';
 		htmlPreviewButtonEle.target = '_blank';
 		htmlPreviewButtonEle.href = 'http://htmlpreview.github.io/?' + window.location.href;
-		buttonGroupEle.insertBefore(htmlPreviewButtonEle, buttonGroupEle[0]);//.children[0]
+		buttonGroupEle.insertBefore(htmlPreviewButtonEle, buttonGroupEle[0]);
 	}
 
 	function onNodeInserted(e) {
