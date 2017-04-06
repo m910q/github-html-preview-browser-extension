@@ -15,9 +15,9 @@
 		
 		// Check if current file in breadcrumbs is an HTML file
 		var finalPathEle = document.querySelector('.final-path');
-		if(finalPathEle == null){
+		if(finalPathEle === null)
 			return false;
-		}
+
 		if (!endsWith(finalPathEle.textContent.trim().toLowerCase(), fileExtension))
 		   return false;
 
@@ -31,7 +31,7 @@
 
 	function addButton() {
 	   var buttonGroupEle = document.querySelector('.file-header .BtnGroup');
-	   if (typeof buttonGroupEle === 'undefined')
+	   if (buttonGroupEle === null)
 		  return;
 
 		var htmlPreviewButtonEle = document.createElement('a');
@@ -54,9 +54,8 @@
 
 	function initialize() {
 		var repoContainerEle = document.querySelector('.repo-container');
-		if (repoContainerEle) {
+		if (repoContainerEle !== null)
 			repoContainerEle.addEventListener ('DOMNodeInserted', onNodeInserted, false);
-		}
 
 		checkFilebox();
 	}
