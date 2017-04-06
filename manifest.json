@@ -11,5 +11,6 @@
 	"description": "Adds a shortcut for HTML preview on Github.",
 	"version": "1.0.2",
 	"manifest_version": 2,
-	"developer": {"name": "m910q"}, "permissions": ["https://github.com/*"]
+	"developer": {"name": "m910q"},
+   "permissions": ["https://github.com/*", "https://htmlpreview.github.io/*"]
 }
