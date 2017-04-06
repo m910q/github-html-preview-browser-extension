@@ -3,6 +3,7 @@
 
 	var ELEMENT_NODE = 1;
 	var TEXT_NODE = 3;
+   var observer = null;
 
 	function endsWith(str, endOfString) {
 		return str.indexOf(endOfString, str.length - endOfString.length) !== -1;
@@ -40,6 +41,8 @@
 		htmlPreviewButtonEle.target = '_blank';
 		htmlPreviewButtonEle.href = 'https://htmlpreview.github.io/?' + window.location.href;
 		buttonGroupEle.insertBefore(htmlPreviewButtonEle, buttonGroupEle[0]);
+      if (observer !== null)
+         observer.takeRecords();
 	}
 
 	function onNodeInserted(e) {
@@ -53,9 +56,11 @@
 	}
 
 	function initialize() {
-		var repoContainerEle = document.querySelector('.repo-container');
-		if (repoContainerEle !== null)
-			repoContainerEle.addEventListener ('DOMNodeInserted', onNodeInserted, false);
+		var itemScope = document.querySelector('div[itemscope]');
+		if (itemScope !== null) {
+         observer = new MutationObserver(function() { checkFilebox(); });
+         observer.observe(itemScope, { childList: true, subtree: true });
+      }
 
 		checkFilebox();
 	}
