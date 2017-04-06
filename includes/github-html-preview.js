@@ -15,7 +15,10 @@
 		
 		// Check if current file in breadcrumbs is an HTML file
 		var finalPathEle = document.querySelector('.final-path');
-		if (typeof finalPathEle === 'undefined' || !endsWith(finalPathEle.textContent.trim().toLowerCase(), fileExtension))
+		if(finalPathEle == null){
+			return false;
+		}
+		if (!endsWith(finalPathEle.textContent.trim().toLowerCase(), fileExtension))
 		   return false;
 
 	   // Check if breadcrumbs continues
@@ -27,16 +30,16 @@
 	}
 
 	function addButton() {
-	   var buttonGroupEle = document.querySelector('.file-header .button-group');
+	   var buttonGroupEle = document.querySelector('.file-header .BtnGroup');
 	   if (typeof buttonGroupEle === 'undefined')
 		  return;
 
 		var htmlPreviewButtonEle = document.createElement('a');
 		htmlPreviewButtonEle.textContent = 'HTML preview';
-		htmlPreviewButtonEle.className = 'minibutton';
+		htmlPreviewButtonEle.className = 'btn btn-sm BtnGroup-item';
 		htmlPreviewButtonEle.target = '_blank';
 		htmlPreviewButtonEle.href = 'http://htmlpreview.github.io/?' + window.location.href;
-		buttonGroupEle.insertBefore(htmlPreviewButtonEle, buttonGroupEle.children[0]);
+		buttonGroupEle.insertBefore(htmlPreviewButtonEle, buttonGroupEle[0]);//.children[0]
 	}
 
 	function onNodeInserted(e) {
